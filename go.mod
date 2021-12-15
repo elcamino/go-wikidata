@@ -1,4 +1,4 @@
-module github.com/Navid2zp/go-wikidata
+module github.com/elcamino/go-wikidata
 
 go 1.16
 
