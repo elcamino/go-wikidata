@@ -187,7 +187,7 @@ func (r *WikiDataGetClaimsRequest) Get() (*map[string][]Claim, error) {
 // WikiData action: wbavailablebadges
 // WikiData API page: https://www.wikidata.org/w/api.php?action=help&modules=wbavailablebadges
 func GetAvailableBadges() ([]string, error) {
-	var data struct{Badges []string}
+	var data struct{ Badges []string }
 	url := fmt.Sprintf(wikiDataAPIURL, "wbavailablebadges")
 	res, err := easyreq.Make("GET", url, nil, "", "json", &data, nil)
 	if err != nil {

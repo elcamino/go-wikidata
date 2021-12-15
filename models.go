@@ -40,18 +40,18 @@ func (r *WikiDataSearchEntitiesRequest) setParam(param string, values *[]string)
 
 // Entity represents wikidata entities data
 type Entity struct {
-	ID           string                 `json:"id"`
-	PageID       int                    `json:"pageid"`
-	NS           int                    `json:"ns"`
-	Title        string                 `json:"title"`
-	LastRevID    int                    `json:"lastrevid"`
-	Modified     string                 `json:"modified"`
-	Type         string                 `json:"type"`
-	Labels       map[string]Label       `json:"labels"`
-	Descriptions map[string]Description `json:"descriptions"`
-	Aliases      map[string][]Alias     `json:"aliases"`
-	Claims       map[string][]Claim     `json:"claims"`
-	SiteLinks    map[string]SiteLink    `json:"sitelinks"`
+	ID           string                 `json:"id,omitempty"`
+	PageID       int                    `json:"pageid,omitempty"`
+	NS           int                    `json:"ns,omitempty"`
+	Title        string                 `json:"title,omitempty"`
+	LastRevID    int                    `json:"lastrevid,omitempty"`
+	Modified     string                 `json:"modified,omitempty"`
+	Type         string                 `json:"type,omitempty"`
+	Labels       map[string]Label       `json:"labels,omitempty"`
+	Descriptions map[string]Description `json:"descriptions,omitempty"`
+	Aliases      map[string][]Alias     `json:"aliases,omitempty"`
+	Claims       map[string][]Claim     `json:"claims,omitempty"`
+	SiteLinks    map[string]SiteLink    `json:"sitelinks,omitempty"`
 }
 
 // GetDescription returns entity description in the given language code
@@ -66,56 +66,56 @@ func (e *Entity) GetLabel(languageCode string) string {
 
 // Label represents wikidata labels data
 type Label struct {
-	Language    string `json:"language"`
-	Value       string `json:"value"`
-	ForLanguage string `json:"for-language"`
+	Language    string `json:"language,omitempty"`
+	Value       string `json:"value,omitempty"`
+	ForLanguage string `json:"for-language,omitempty"`
 }
 
 // Description represents wikidata descriptions data
 type Description struct {
-	Language    string `json:"language"`
-	Value       string `json:"value"`
-	ForLanguage string `json:"for-language"`
+	Language    string `json:"language,omitempty"`
+	Value       string `json:"value,omitempty"`
+	ForLanguage string `json:"for-language,omitempty"`
 }
 
 // Alias represents wikidata aliases data
 type Alias struct {
-	Language string `json:"language"`
-	Value    string `json:"value"`
+	Language string `json:"language,omitempty"`
+	Value    string `json:"value,omitempty"`
 }
 
 // SiteLink represents wikidata site links data
 type SiteLink struct {
-	Site   string   `json:"site"`
-	Title  string   `json:"title"`
-	Badges []string `json:"badges"`
+	Site   string   `json:"site,omitempty"`
+	Title  string   `json:"title,omitempty"`
+	Badges []string `json:"badges,omitempty"`
 }
 
 // Claim represents wikidata claims data
 type Claim struct {
-	ID              string            `json:"id"`
-	Rank            string            `json:"rank"`
-	Type            string            `json:"type"`
-	MainSnak        Snak              `json:"mainsnak"`
-	Qualifiers      map[string][]Snak `json:"qualifiers"`
-	QualifiersOrder []string          `json:"qualifiers-order"`
+	ID              string            `json:"id,omitempty"`
+	Rank            string            `json:"rank,omitempty"`
+	Type            string            `json:"type,omitempty"`
+	MainSnak        Snak              `json:"mainsnak,omitempty"`
+	Qualifiers      map[string][]Snak `json:"qualifiers,omitempty"`
+	QualifiersOrder []string          `json:"qualifiers-order,omitempty"`
 }
 
 // Snak represents wikidata snak values
 type Snak struct {
-	SnakType  string    `json:"snaktype"`
-	Property  string    `json:"property"`
-	Hash      string    `json:"hash"`
-	DataType  string    `json:"datatype"`
-	DataValue DataValue `json:"datavalue"`
+	SnakType  string    `json:"snaktype,omitempty"`
+	Property  string    `json:"property,omitempty"`
+	Hash      string    `json:"hash,omitempty"`
+	DataType  string    `json:"datatype,omitempty"`
+	DataValue DataValue `json:"datavalue,omitempty"`
 }
 
 // DataValue represents wikidata values
 // Wikidata values can be either string or number
 // It will store the data type so you can work with it accordingly
 type DataValue struct {
-	Type  string           `json:"type"`
-	Value DynamicDataValue `json:"value"`
+	Type  string           `json:"type,omitempty"`
+	Value DynamicDataValue `json:"value,omitempty"`
 }
 
 // DynamicDataValue represents wikidata values for DataValue struct
@@ -166,90 +166,90 @@ func (d *DynamicDataValue) UnmarshalJSON(b []byte) (err error) {
 
 // DataValueFields represents wikidata value fields
 type DataValueFields struct {
-	EntityType    string  `json:"entity-type"`
-	NumericID     int     `json:"numeric-id"`
-	ID            string  `json:"id"`
-	Type          string  `json:"type"`
-	Value         string  `json:"value"`
-	Time          string  `json:"time"`
-	Precision     float64 `json:"precision"`
-	Before        int     `json:"before"`
-	After         int     `json:"after"`
-	TimeZone      int     `json:"timezone"`
-	CalendarModel string  `json:"calendarmodel"`
-	Latitude      float64 `json:"latitude"`
-	Longitude     float64 `json:"longitude"`
-	Globe         string  `json:"globe"`
-	Amount        string  `json:"amount"`
-	LowerBound    string  `json:"lowerbound"`
-	UpperBound    string  `json:"upperbound"`
-	Unit          string  `json:"unit"`
-	Text          string  `json:"text"`
-	Language      string  `json:"language"`
+	EntityType    string  `json:"entity-type,omitempty"`
+	NumericID     int     `json:"numeric-id,omitempty"`
+	ID            string  `json:"id,omitempty"`
+	Type          string  `json:"type,omitempty"`
+	Value         string  `json:"value,omitempty"`
+	Time          string  `json:"time,omitempty"`
+	Precision     float64 `json:"precision,omitempty"`
+	Before        int     `json:"before,omitempty"`
+	After         int     `json:"after,omitempty"`
+	TimeZone      int     `json:"timezone,omitempty"`
+	CalendarModel string  `json:"calendarmodel,omitempty"`
+	Latitude      float64 `json:"latitude,omitempty"`
+	Longitude     float64 `json:"longitude,omitempty"`
+	Globe         string  `json:"globe,omitempty"`
+	Amount        string  `json:"amount,omitempty"`
+	LowerBound    string  `json:"lowerbound,omitempty"`
+	UpperBound    string  `json:"upperbound,omitempty"`
+	Unit          string  `json:"unit,omitempty"`
+	Text          string  `json:"text,omitempty"`
+	Language      string  `json:"language,omitempty"`
 }
 
 // Reference represents wikidata references
 type Reference struct {
-	Hash       string            `json:"hash"`
-	Snaks      map[string][]Snak `json:"snaks"`
-	SnaksOrder []string          `json:"snaks-order"`
+	Hash       string            `json:"hash,omitempty"`
+	Snaks      map[string][]Snak `json:"snaks,omitempty"`
+	SnaksOrder []string          `json:"snaks-order,omitempty"`
 }
 
 // GetEntitiesResponse represents wikidata entities response
 type GetEntitiesResponse struct {
-	Entities map[string]Entity `json:"entities"`
-	Success  uint              `json:"success"`
+	Entities map[string]Entity `json:"entities,omitempty"`
+	Success  uint              `json:"success,omitempty"`
 }
 
 // GetClaimsResponse represents wikidata claims response
 type GetClaimsResponse struct {
-	Claims map[string][]Claim `json:"claims"`
+	Claims map[string][]Claim `json:"claims,omitempty"`
 }
 
 // SearchEntity represents wikidata entities search
 type SearchEntity struct {
-	Repository  string      `json:"repository"`
-	ID          string      `json:"id"`
-	ConceptURI  string      `json:"concepturi"`
-	Title       string      `json:"title"`
-	PageID      int         `json:"pageid"`
-	URL         string      `json:"url"`
-	Label       string      `json:"label"`
-	Description string      `json:"description"`
-	Match       SearchMatch `json:"match"`
-	DataType    string      `json:"datatype"`
+	Repository  string      `json:"repository,omitempty"`
+	ID          string      `json:"id,omitempty"`
+	ConceptURI  string      `json:"concepturi,omitempty"`
+	Title       string      `json:"title,omitempty"`
+	PageID      int         `json:"pageid,omitempty"`
+	URL         string      `json:"url,omitempty"`
+	Label       string      `json:"label,omitempty"`
+	Description string      `json:"description,omitempty"`
+	Match       SearchMatch `json:"match,omitempty"`
+	DataType    string      `json:"datatype,omitempty"`
 }
 
 // SearchMatch represents wikidata search match value
 type SearchMatch struct {
-	Type     string `json:"type"`
-	Language string `json:"language"`
-	Text     string `json:"text"`
+	Type     string `json:"type,omitempty"`
+	Language string `json:"language,omitempty"`
+	Text     string `json:"text,omitempty"`
 }
 
 // SearchInfo represents wikidata search info
 type SearchInfo struct {
-	Search string `json:"search"`
+	Search string `json:"search,omitempty"`
 }
 
 // SearchEntitiesResponse represents wikidata entities search response
 type SearchEntitiesResponse struct {
-	SearchInfo      SearchInfo     `json:"searchinfo"`
-	SearchResult    []SearchEntity `json:"search"`
-	SearchContinue  int            `json:"search-continue"`
-	Success         uint           `json:"success"`
+	SearchInfo      SearchInfo     `json:"searchinfo,omitempty"`
+	SearchResult    []SearchEntity `json:"search,omitempty"`
+	SearchContinue  int            `json:"search-continue,omitempty"`
+	Success         uint           `json:"success,omitempty"`
 	CurrentContinue int
 	SearchRequest   WikiDataSearchEntitiesRequest
 }
 
 // WikiPediaQuery represents wikipedia query
 type WikiPediaQuery struct {
-	BatchComplete string `json:"batchcomplete"`
+	BatchComplete string `json:"batchcomplete,omitempty"`
 	Query         struct {
 		Pages map[string]struct {
 			PageProps struct {
-				WikiBaseItem string `json:"wikibase_item"`
-			} `json:"pageprops"`
-		} `json:"pages"`
-	} `json:"query"`
+				WikiBaseItem string `json:"wikibase_item,omitempty"`
+			} `json:"pageprops,omitempty"`
+		} `json:"pages,omitempty"`
+	} `json:"query,omitempty"`
 }
