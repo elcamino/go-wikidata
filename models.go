@@ -47,6 +47,7 @@ type Entity struct {
 	LastRevID    int                    `json:"lastrevid,omitempty"`
 	Modified     string                 `json:"modified,omitempty"`
 	Type         string                 `json:"type,omitempty"`
+	Label        string                 `json:"label,omitempty"`
 	Labels       map[string]Label       `json:"labels,omitempty"`
 	Descriptions map[string]Description `json:"descriptions,omitempty"`
 	Aliases      map[string][]Alias     `json:"aliases,omitempty"`
@@ -94,6 +95,7 @@ type SiteLink struct {
 // Claim represents wikidata claims data
 type Claim struct {
 	ID              string            `json:"id,omitempty"`
+	Label           string            `json:"label,omitempty"`
 	Rank            string            `json:"rank,omitempty"`
 	Type            string            `json:"type,omitempty"`
 	MainSnak        Snak              `json:"mainsnak,omitempty"`
